@@ -1,5 +1,7 @@
+const os = require('os');
 const fs = require('fs');
 const path = require('path');
+
 const request = require('request');
 const express = require('express');
 
@@ -18,7 +20,8 @@ app.get('/profile/:username', (req, res) => {
   // Resolve redirect from https://twitter.com/USERNAME/profile_image?size=original
   if (platform === 'twitter') {
     const url = `https://twitter.com/${username}/profile_image`;
-    const filename = path.join(__dirname, `../cache/${username}.jpg`);
+    const filename = path.join(os.tmpdir(), `${username}.jpg`);
+    console.log(filename);
 
     // If the profile image is cached and it's been less than an hour since it was written to,
     // return that cached version.
