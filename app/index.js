@@ -8,6 +8,12 @@ const express = require('express');
 
 const app = express();
 
+/** Redirect to main website from root */
+app.get('/', (req, res) => {
+  res.redirect('https://arkis.io/');
+});
+
+
 /** Return a user's profile picture given their username */
 app.get('/profile/:username', (req, res) => {
   const platform = req.query.platform || 'twitter';
