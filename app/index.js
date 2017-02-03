@@ -28,7 +28,7 @@ app.post('/contact', (req, res) => {
   const name = [req.body.firstName || '', req.body.lastName || ''];
   const emailFrom = req.body.email || '';
   const message = req.body.message || '';
-  contactForm.send(name, emailFrom, message, res.send);
+  contactForm.send(name, emailFrom, message, r => res.send(r));
 });
 
 const args = process.argv.slice(2);
