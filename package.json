@@ -9,6 +9,7 @@
   "author": "Luke Deen Taylor",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.16.0",
     "express": "^4.14.1",
     "nodemailer": "^3.0.0",
     "request": "^2.79.0"

@@ -1,8 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const profilePictures = require('./profile-pictures');
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 /** Redirect to main website from root */
 app.get('/', (req, res) => {
@@ -16,6 +21,13 @@ app.get('/profile/:username', (req, res) => {
   const username = req.params.username;
   if (!username) res.status(400).send('Error: Must provide a username');
   if (platform === 'twitter') profilePictures.getTwitterPicture(username, res);
+});
+
+app.post('/contact', (req, res) => {
+  const emailFrom = req.body.email || '';
+  const name = [req.body.firstName || '', req.body.lastName || ''];
+  const message = req.body.message || '';
+  res.send(`Name: ${name[0]} ${name[1]}\nemail: ${emailFrom}\nmessage: ${message}`);
 });
 
 const args = process.argv.slice(2);
