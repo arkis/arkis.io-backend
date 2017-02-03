@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const profilePictures = require('./profile-pictures');
+const contactForm = require('./contact-form');
 
 const app = express();
 
@@ -24,10 +25,10 @@ app.get('/profile/:username', (req, res) => {
 });
 
 app.post('/contact', (req, res) => {
-  const emailFrom = req.body.email || '';
   const name = [req.body.firstName || '', req.body.lastName || ''];
+  const emailFrom = req.body.email || '';
   const message = req.body.message || '';
-  res.send(`Name: ${name[0]} ${name[1]}\nemail: ${emailFrom}\nmessage: ${message}`);
+  contactForm.send(name, emailFrom, message, res.send);
 });
 
 const args = process.argv.slice(2);
