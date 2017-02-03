@@ -29,10 +29,9 @@ module.exports.getTwitterPicture = (username, outStream) => {
       const r = request(squareURL); // Request new URL
       const file = fs.createWriteStream(filename); // Write the image to a file
       r.pipe(file);
-      return file;
       file.on('finish', () => { // When that's done, return the file's contents
         fs.createReadStream(filename).pipe(outStream);
-      })
+      });
     });
   }
-}
+};
