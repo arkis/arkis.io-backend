@@ -1,18 +1,20 @@
 const fs = require('fs');
 const path = require('path');
+
+const escape = require('escape-html');
 const sendmail = require('sendmail')();
 
 
 module.exports.send = (name, emailFrom, message, callback) => {
   const emailTemplate = fs.readFileSync(path.join(__dirname, './contact-message-template.html'), 'utf8');
   const htmlMessage = emailTemplate.replace(
-    '[[first]]', name[0]
+    '[[first]]', escape(name[0])
   ).replace(
-    '[[last]]', name[1]
+    '[[last]]', escape(name[1])
   ).replace(
-    '[[email]]', emailFrom
+    '[[email]]', escape(emailFrom)
   ).replace(
-    '[[message]]', message
+    '[[message]]', escape(message)
   );
 
   sendmail({
