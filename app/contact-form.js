@@ -16,11 +16,12 @@ module.exports.send = (name, emailFrom, message, callback) => {
   ).replace(
     '[[message]]', escape(message)
   );
+  const timestamp = `${new Date().toLocaleTimeString()} on ${new Date().toLocaleDateString()}`;
 
   sendmail({
     from: 'contact@arkis.io',
     to: 'luke@deentaylor.com',
-    subject: `Arkis contact form: ${name[0]} ${name[1]} (${emailFrom})`,
+    subject: `Arkis contact form: ${name[0]} ${name[1]} (${emailFrom}) at ${timestamp}`,
     html: htmlMessage,
   }, (err, reply) => {
     if (err) {
