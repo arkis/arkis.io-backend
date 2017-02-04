@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const multer = require('multer');
 
 const profilePictures = require('./profile-pictures');
 const contactForm = require('./contact-form');
@@ -29,7 +30,7 @@ app.get('/profile/:username', (req, res) => {
   if (platform === 'twitter') profilePictures.getTwitterPicture(username, res);
 });
 
-app.post('/contact', (req, res) => {
+app.post('/contact', multer().fields([]), (req, res) => {
   const name = [req.body.firstName || '', req.body.lastName || ''];
   const emailFrom = req.body.email || '';
   const message = req.body.message || '';
