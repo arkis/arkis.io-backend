@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Arkis contact form</title>
+
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:300,400');
+
+    .everything {
+      background-color: black;
+      color: white;
+      font-family: 'Open Sans', sans-serif;
+      padding: 50px;
+    }
+
+    h1 {
+      font-family: 'Montserrat', serif;
+      font-size: 3vw;
+      font-weight: bold;
+      text-align: center
+    }
+
+    h3 {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.5vw;
+      text-transform: uppercase;
+      font-weight: 300;
+      text-align: center;
+      letter-spacing: 0.2vw;
+
+      margin: 0.5em 0;
+    }
+
+    p.center {
+      margin: 0;
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-weight: 300;
+      font-size: 1.1vw;
+    }
+
+    .main-content {
+      padding: 20px;
+      width: 50vw;
+      margin: 10vh auto 0;
+      background-color: rgb(30, 30, 30);
+      font-size: 1.3vw;
+    }
+
+    @media (max-width: 420px) and (orientation: portrait) {
+      .main-content {
+        width: 80vw;
+      }
+      h1 {
+        font-size: 8vw;
+      }
+      h3 {
+        font-size: 4vw;
+      }
+      p.center {
+        font-size: 4vw;
+      }
+      .main-content {
+        font-size: 4vw;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+  <div class="everything">
+    <h1>Arkis contact form</h1>
+    <h3>New message from [[first]] [[last]]</h3>
+    <p class="center">[[email]]</p>
+
+    <div class="main-content">
+      [[message]]
+    </div>
+  </div>
+</body>
+
+</html>
