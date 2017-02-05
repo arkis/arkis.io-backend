@@ -39,8 +39,8 @@ app.post('/contact', multer().fields([]), (req, res) => {
 
 // Dummy endpoints for contact form (used in debugging)
 // The first endpoint returns 'true' after 1 second, the second endpoint returns 'false'
-app.post('/contact-dummy-true', (req, res) => setTimeout(() => res.send('true'), 1000));
-app.post('/contact-dummy-false', (req, res) => setTimeout(() => res.send('false'), 1000));
+app.post('/contact-dummy-true', (req, res) => setTimeout(() => res.send('true'), 3000));
+app.post('/contact-dummy-false', (req, res) => setTimeout(() => res.send('false'), 3000));
 
 
 const args = process.argv.slice(2);
