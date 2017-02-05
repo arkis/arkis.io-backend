@@ -37,11 +37,12 @@ app.post('/contact', multer().fields([]), (req, res) => {
   contactForm.send(name, emailFrom, message, r => res.send(r));
 });
 
-// Dummy endpoints for contact form (used in debugging)
-// The first endpoint returns 'true' after 1 second, the second endpoint returns 'false'
-app.post('/contact-dummy-true', (req, res) => setTimeout(() => res.send('true'), 3000));
-app.post('/contact-dummy-false', (req, res) => setTimeout(() => res.send('false'), 3000));
-
+// Dummy endpoint for debugging: returns a given value after a given delay
+app.all('/dummy', (req, res) => {
+  const delay = req.query.delay;
+  const response = req.query.response;
+  setTimeout(() => res.send(response), delay);
+});
 
 const args = process.argv.slice(2);
 const port = args.length ? args[0] : 3000;
